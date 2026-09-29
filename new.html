@@ -1,0 +1,356 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spreadsheet</title>
+    <style>
+
+body {
+    margin: 0;
+    padding: 8px;
+
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+.file-menu {
+    display: flex;
+    align-items: center;
+
+    height: 40px;
+
+    gap: 4px;
+
+    position: relative;
+}
+.icon-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.name {
+    width: 170px;
+    height: 28px;
+
+    box-sizing: border-box;
+
+    padding: 4px 7px;
+
+    border: 1px solid #ccc;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+.buttons {
+    height: 32px;
+
+    padding: 4px 12px;
+
+    border: none;
+
+    background-color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+.buttons:hover {
+    background-color: #eeeeee;
+}
+
+
+.dropdown-menu {
+    display: none;
+
+    position: absolute;
+
+    top: 37px;
+    left: 205px;
+
+    width: 120px;
+
+    background-color: white;
+
+    border: 1px solid #aaa;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+
+    z-index: 1000;
+}
+
+
+.dropdown-menu button {
+    display: block;
+
+    width: 100%;
+    height: 32px;
+
+    padding: 5px 12px;
+
+    border: none;
+
+    background-color: white;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.dropdown-menu button:hover {
+    background-color: #eeeeee;
+}
+
+
+hr {
+    margin: 7px 0;
+
+    border: none;
+
+    border-top: 1px solid #999;
+}
+
+
+.applications {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    height: 38px;
+
+    margin-bottom: 8px;
+}
+
+
+.undoredo {
+    height: 30px;
+
+    padding: 4px 12px;
+
+    border: none;
+
+    background-color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.undoredo:hover {
+    background-color: #eeeeee;
+}
+
+
+.applications .icon-btn {
+    width: 28px;
+    height: 28px;
+
+    font-size: 18px;
+}
+
+
+#spreadsheet {
+    display: grid;
+
+    grid-auto-flow: row;
+
+    grid-auto-rows: 30px;
+
+    width: max-content;
+
+    margin-top: 8px;
+}
+
+.cell {
+    width: 100px;
+    height: 30px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #222;
+
+    padding: 0 5px;
+
+    display: flex;
+
+    align-items: center;
+
+    background-color: white;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+}
+
+
+
+#spreadsheet > .cell:not(.row-header) {
+    background-color: white;
+
+    font-weight: bold;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.bnkspc {
+    width: 40px !important;
+    height: 30px !important;
+
+    box-sizing: border-box;
+
+    border: 1px solid #222;
+
+    background-color: white;
+}
+
+
+
+.row-header {
+    width: 40px !important;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background-color: white;
+
+    font-weight: bold;
+
+    padding: 0;
+}
+
+.cell.selected {
+    background-color: aqua;
+}
+
+.cell[contenteditable="true"] {
+    outline: none;
+}
+
+
+
+.cell[contenteditable="true"]:hover {
+    background-color: #f2f2f2;
+}
+.top-right-buttons {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+
+#downloadButton {
+    height: 32px;
+
+    padding: 4px 12px;
+
+    border: 1px solid #aaa;
+
+    background-color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+
+#downloadButton:hover {
+    background-color: #eeeeee;
+}
+
+#dashboardButton {
+    height: 32px;
+
+    padding: 4px 12px;
+
+    border: 1px solid #aaa;
+
+    background-color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+
+#dashboardButton:hover {
+    background-color: #eeeeee;
+}
+    </style>
+</head>
+<body>
+
+    <div class="top-right-buttons">
+        <button id="downloadButton" type="button">Download CSV</button>
+        <button id="dashboardButton" type="button">← Dashboard</button>
+    </div>
+
+    <div class="file-menu">
+        <span class="icon-btn" id="homeButton" title="Back to dashboard">🏠</span>
+
+        <input type="text" class="name" id="excelNameDisplay" placeholder="Untitled Spreadsheet">
+
+        <button class="buttons" id="file-button" type="button">File</button>
+        <div class="dropdown-menu" id="fileMenu">
+            <button id="saveOption" type="button">Save</button>
+            <button id="closeOption" type="button">Close</button>
+        </div>
+
+        <button class="buttons" type="button">Edit</button>
+        <button class="buttons" type="button">View</button>
+        <button class="buttons" type="button">Insert</button>
+    </div>
+
+    <hr>
+
+    <div class="applications">
+        <button class="undoredo" id="undoButton" type="button" title="Undo (not yet implemented)">↶</button>
+        <button class="undoredo" id="redoButton" type="button" title="Redo (not yet implemented)">↷</button>
+        <span class="icon-btn" id="printButton" title="Print">🖨️</span>
+    </div>
+
+    <div id="spreadsheet"></div>
+
+    <script src="iko.js"></script>
+</body>
+</html>

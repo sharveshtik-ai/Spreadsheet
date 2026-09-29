@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>MySpreadsheet</title>
+        <link rel="stylesheet" href="sample.css">
+    </head>
+
+    <body>
+    <div>
+
+    <div class="file-menu">
+        <span class="icon-btn" onclick="location.reload()" title="Reload">🏠</span>
+        <input id="title" value="Untitled Spreadsheet" class="name">
+
+        <button value="File" class="buttons" id="file-button">File</button>
+
+        <div class="dropdown-menu" id="fileMenu">
+            <button id="newButton">New</button>
+            <button id="openButton">Open</button>
+            <button id="saveButton">Save</button>
+            <button id="saveAsButton">Save As</button>
+        </div>
+
+        <button value="Edit" class="buttons">Edit</button>
+        <button value="View" class="buttons">View</button>
+        <button value="Insert" class="buttons">Insert</button>
+
+    </div>
+    <hr>
+    <div class="applications">
+        
+        <span class="icon-btn" onclick="window.print()" title="Print">🖨️</span>
+    </div>
+    <div class="spreadsheet" id="spreadsheet">
+    </div>
+
+    <script src="script.js"></script>
+    </body>
+</html>

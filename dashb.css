@@ -1,0 +1,193 @@
+/* ================================
+   GENERAL PAGE
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    background-color: #f5f7fb;
+    color: #222;
+}
+
+
+/* ================================
+   DASHBOARD
+================================ */
+
+#dashboard {
+    width: 500px;
+
+    margin: 60px auto 30px auto;
+    padding: 30px;
+
+    background-color: white;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ================================
+   TITLE
+================================ */
+
+.title {
+    margin-top: 0;
+    margin-bottom: 25px;
+
+    font-size: 32px;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+/* ================================
+   INPUTS
+================================ */
+
+#excelName,
+#rows,
+#cols {
+    display: block;
+
+    width: 100%;
+    height: 40px;
+
+    margin-bottom: 12px;
+
+    padding: 8px 12px;
+
+    font-size: 15px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    outline: none;
+}
+
+
+/* Input when clicked */
+
+#excelName:focus,
+#rows:focus,
+#cols:focus {
+    border-color: #555;
+}
+
+
+/* ================================
+   CREATE BUTTON
+================================ */
+
+#Create {
+    width: 100%;
+    height: 40px;
+
+    margin-top: 5px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #222;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* Button hover */
+
+#Create:hover {
+    background-color: #444;
+}
+
+
+/* ================================
+   FILE CONTAINER
+================================ */
+
+#fileContainer {
+    width: 500px;
+
+    margin: 0 auto;
+}
+
+
+/* ================================
+   EACH EXCEL FILE
+================================ */
+
+#fileContainer > div {
+    margin-bottom: 15px;
+    padding: 20px;
+
+    background-color: white;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Excel file name */
+
+#fileContainer h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+
+    font-size: 22px;
+}
+
+
+/* Rows and columns text */
+
+#fileContainer p {
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* ================================
+   OPEN & DELETE BUTTONS
+================================ */
+
+#fileContainer button {
+    height: 34px;
+
+    padding: 0 15px;
+
+    margin-right: 8px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    background-color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+/* Button hover */
+
+#fileContainer button:hover {
+    background-color: #eee;
+}
